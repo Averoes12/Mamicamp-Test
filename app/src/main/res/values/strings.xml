@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Books App</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Category</string>
+    <string name="item_books">item books</string>
+    <string name="latest_book">Latest Book</string>
+    <string name="genre">Genre</string>
+    <string name="error_text">Sorry, There is Something Wrong</string>
+    <string name="image_error">image_error</string>
+</resources>

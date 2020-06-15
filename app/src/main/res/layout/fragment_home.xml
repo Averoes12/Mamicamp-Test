@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.home.HomeFragment">
+
+    <com.github.ybq.android.spinkit.SpinKitView
+        android:id="@+id/loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/SpinKitView.FoldingCube"
+        app:SpinKit_Color="@android:color/holo_blue_light"
+        android:layout_gravity="center"/>
+
+    <LinearLayout
+        android:id="@+id/home_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/label_genre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/genre"
+            android:layout_marginStart="16dp"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:textColor="@android:color/black"
+            />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/genre_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            tools:listitem="@layout/item_genre"
+            android:layout_marginTop="8dp"
+            />
+
+        <TextView
+            android:id="@+id/label_latest_book"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/latest_book"
+            app:layout_constraintTop_toBottomOf="@id/genre_list"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="16dp"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:textColor="@android:color/black"
+            />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/latest_book_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            tools:listitem="@layout/item_books"
+            android:layout_marginTop="8dp"
+            />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:id="@+id/empty_state">
+
+        <ImageView
+            android:id="@+id/image_error"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/ic_error"
+            android:contentDescription="@string/image_error"
+            android:layout_gravity="center|center_vertical"
+            />
+
+        <TextView
+            android:id="@+id/text_error"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/error_text"
+            android:gravity="center"
+            android:layout_marginTop="16dp"
+            />
+    </LinearLayout>
+</FrameLayout>
