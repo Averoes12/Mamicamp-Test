@@ -11,6 +11,7 @@ import com.averoes.booksapp.R
 import com.averoes.booksapp.model.genre.Genre
 import com.averoes.booksapp.model.genre.ResourceItem
 import com.averoes.booksapp.utils.Constant.GENRE_ID
+import com.averoes.booksapp.utils.Constant.NAME_GENRE
 import kotlinx.android.synthetic.main.item_genre.view.*
 
 class GenreAdapter(var genre: List<ResourceItem?>?) : RecyclerView.Adapter<GenreAdapter.Holder>() {
@@ -31,7 +32,7 @@ class GenreAdapter(var genre: List<ResourceItem?>?) : RecyclerView.Adapter<Genre
             itemView.genre_button.setOnClickListener {
                 val genreBooks = Intent(itemView.context, GenreActivty::class.java)
                 genreBooks.putExtra(GENRE_ID, item[position]?.id)
-                genreBooks.putExtra("name_genre", item[position]?.title)
+                genreBooks.putExtra(NAME_GENRE, item[position]?.title)
                 itemView.context.startActivity(genreBooks)
             }
         }

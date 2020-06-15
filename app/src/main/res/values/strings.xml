@@ -7,4 +7,5 @@
     <string name="genre">Genre</string>
     <string name="error_text">Sorry, There is Something Wrong</string>
     <string name="image_error">image_error</string>
+    <string name="cover">cover</string>
 </resources>

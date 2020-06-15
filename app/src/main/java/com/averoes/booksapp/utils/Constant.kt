@@ -6,4 +6,5 @@ object Constant {
     const val BASE_URL = "https://cabaca.id:8443/api/v2/"
     const val IMAGE_BASEURL = "https://cabaca.id:8443/api/v2/files/"
     const val GENRE_ID = "genre_ID"
+    const val NAME_GENRE = "name_genre"
 }

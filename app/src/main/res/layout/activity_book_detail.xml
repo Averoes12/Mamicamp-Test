@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BookDetail">
+
+    <ImageView
+        android:id="@+id/bg_book_detail"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:contentDescription="@string/cover"
+        tools:src="@android:color/holo_blue_light"
+        />
+
+    <ImageView
+        android:id="@+id/poster_book_detail"
+        android:layout_width="120dp"
+        android:layout_height="150dp"
+        tools:src="@android:color/white"
+        android:layout_alignBottom="@id/bg_book_detail"
+        android:contentDescription="@string/cover"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="8dp"
+        />
+
+    <LinearLayout
+        android:id="@+id/content_detail_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_toEndOf="@id/poster_book_detail"
+        android:layout_alignTop="@id/poster_book_detail"
+        android:layout_alignBottom="@id/bg_book_detail"
+        android:layout_marginStart="8dp"
+        >
+
+        <TextView
+            android:id="@+id/title_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            tools:text="Title"/>
+
+        <TextView
+            android:id="@+id/author_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:layout_marginTop="8dp"
+            android:textSize="14sp"
+            tools:text="Title"/>
+
+        <TextView
+            android:id="@+id/status_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:textSize="14sp"
+            android:layout_marginTop="8dp"
+            tools:text="Title"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/synopsis_detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        android:layout_below="@id/bg_book_detail"
+        android:layout_marginTop="32dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        tools:text="Title"/>
+
+</RelativeLayout>

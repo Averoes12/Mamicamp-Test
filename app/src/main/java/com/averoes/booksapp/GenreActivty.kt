@@ -10,6 +10,7 @@ import com.averoes.booksapp.model.book.ResponseBook
 import com.averoes.booksapp.ui.home.BooksAdapter
 import com.averoes.booksapp.utils.ConfigRetrofit
 import com.averoes.booksapp.utils.Constant.GENRE_ID
+import com.averoes.booksapp.utils.Constant.NAME_GENRE
 import kotlinx.android.synthetic.main.activity_genre_activty.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home.empty_state
@@ -24,6 +25,7 @@ class GenreActivty : AppCompatActivity() {
         setContentView(R.layout.activity_genre_activty)
 
         getBooksByCategory(intent.getIntExtra(GENRE_ID, 0))
+        supportActionBar?.title = intent.getStringExtra(NAME_GENRE)
     }
 
     private fun getBooksByCategory(genreId: Int) {
