@@ -1,20 +1,21 @@
-package com.averoes.booksapp
+package com.averoes.booksapp.ui.genre
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
+import com.averoes.booksapp.R
 import com.averoes.booksapp.model.book.ResponseBook
 import com.averoes.booksapp.ui.home.BooksAdapter
+import com.averoes.booksapp.ui.home.GenreAdapter
 import com.averoes.booksapp.utils.ConfigRetrofit
 import com.averoes.booksapp.utils.Constant.GENRE_ID
 import com.averoes.booksapp.utils.Constant.NAME_GENRE
+import com.github.ybq.android.spinkit.style.FoldingCube
 import kotlinx.android.synthetic.main.activity_genre_activty.*
-import kotlinx.android.synthetic.main.fragment_home.*
-import kotlinx.android.synthetic.main.fragment_home.empty_state
-import kotlinx.android.synthetic.main.fragment_home.loading
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -26,6 +27,22 @@ class GenreActivty : AppCompatActivity() {
 
         getBooksByCategory(intent.getIntExtra(GENRE_ID, 0))
         supportActionBar?.title = intent.getStringExtra(NAME_GENRE)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        val animation = FoldingCube();
+        loading_genre.setIndeterminateDrawable(animation);
+
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == android.R.id.home){
+            finish()
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     private fun getBooksByCategory(genreId: Int) {
@@ -55,23 +72,23 @@ class GenreActivty : AppCompatActivity() {
     }
 
     private fun enableLoading() {
-        loading.visibility = View.VISIBLE
+        loading_genre.visibility = View.VISIBLE
         content_container.visibility = View.GONE
     }
 
     private fun disabledLoading() {
-        loading.visibility = View.GONE
+        loading_genre.visibility = View.GONE
         content_container.visibility = View.VISIBLE
     }
 
     private fun showEmptyState() {
-        empty_state.visibility = View.VISIBLE
+        empty_genre.visibility = View.VISIBLE
         content_container.visibility = View.GONE
     }
 
     private fun hideEmptyState(){
         content_container.visibility = View.VISIBLE
-        empty_state.visibility = View.GONE
+        empty_genre.visibility = View.GONE
     }
 
 }

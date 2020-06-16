@@ -1,11 +1,12 @@
 package com.averoes.booksapp.model
 
+import com.averoes.booksapp.model.genre.ResourceItem
 import com.google.gson.annotations.SerializedName
 
 data class ResponseBookDetail(
 
 	@field:SerializedName("result")
-	val result: Result? = null,
+	val result: ResultBook? = null,
 
 	@field:SerializedName("success")
 	val success: Boolean? = null
@@ -68,7 +69,7 @@ data class BookChapterByBookIdItem(
 	val isPurchased: Boolean? = null
 )
 
-data class Result(
+data class ResultBook(
 
 	@field:SerializedName("Writer_by_writer_id")
 	val writerByWriterId: WriterByWriterId? = null,
@@ -104,13 +105,13 @@ data class Result(
 	val updatedAt: String? = null,
 
 	@field:SerializedName("reviews")
-	val reviews: List<ReviewsItem?>? = null,
+	val reviews: List<ReviewsItem>? = null,
 
 	@field:SerializedName("happyhour")
 	val happyhour: Boolean? = null,
 
 	@field:SerializedName("genres")
-	val genres: List<GenresItem?>? = null,
+	val genres: List<ResourceItem?>? = null,
 
 	@field:SerializedName("is_update")
 	val isUpdate: Boolean? = null,

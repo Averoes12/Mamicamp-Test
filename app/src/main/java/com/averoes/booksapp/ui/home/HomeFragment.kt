@@ -85,7 +85,7 @@ class HomeFragment : Fragment() {
 
     private fun enableLoading() {
         loading.visibility = View.VISIBLE
-        home_container.visibility = View.INVISIBLE
+        home_container.visibility = View.GONE
     }
 
     private fun disabledLoading() {

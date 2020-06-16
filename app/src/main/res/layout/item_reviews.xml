@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="10dp"
+    android:layout_marginEnd="8dp"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="8dp">
+
+        <TextView
+            android:id="@+id/update_at"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:gravity="end"
+            android:textStyle="italic"
+            tools:text="update at" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/photo_review"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_below="@id/update_at"
+            tools:src="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/username_user"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_below="@id/update_at"
+            android:layout_toEndOf="@id/photo_review"
+            android:maxLines="2"
+            android:ems="2"
+            tools:text="username" />
+
+        <TextView
+            android:id="@+id/email_user"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/username_user"
+            android:layout_marginStart="8dp"
+            android:layout_toEndOf="@id/photo_review"
+            android:textStyle="italic"
+            tools:text="email" />
+
+        <TextView
+            android:id="@+id/body_review"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Lorem ipsum "
+            android:layout_toEndOf="@id/photo_review"
+            android:layout_below="@id/photo_review"
+            android:textStyle="italic"
+            android:layout_marginTop="8dp"
+             />
+
+        <androidx.appcompat.widget.AppCompatRatingBar
+            android:id="@+id/review_rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:numStars="5"
+            android:layout_below="@id/body_review"
+            android:layout_alignParentEnd="true"
+            style="@style/Widget.AppCompat.RatingBar.Small" />
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

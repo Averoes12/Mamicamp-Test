@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GenreActivty">
+    tools:context=".ui.genre.GenreActivty">
 
     <com.github.ybq.android.spinkit.SpinKitView
-        android:id="@+id/loading"
+        android:id="@+id/loading_genre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="@style/SpinKitView.FoldingCube"
@@ -35,7 +35,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:gravity="center"
-        android:id="@+id/empty_state">
+        android:id="@+id/empty_genre">
 
         <ImageView
             android:id="@+id/image_error"

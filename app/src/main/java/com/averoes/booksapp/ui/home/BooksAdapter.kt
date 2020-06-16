@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.averoes.booksapp.BookDetail
+import com.averoes.booksapp.ui.book.BookDetail
 import com.averoes.booksapp.R
 import com.averoes.booksapp.model.book.ResponseBook
 import com.averoes.booksapp.model.book.Result
@@ -43,11 +43,7 @@ class BooksAdapter (var books:ResponseBook) : RecyclerView.Adapter<BooksAdapter.
 
             itemView.setOnClickListener {
                 val booksDetail = Intent(itemView.context, BookDetail::class.java)
-                booksDetail.putExtra("title", item.title)
-                booksDetail.putExtra("author", item.writerByWriterId.userByUserId.name)
-                booksDetail.putExtra("status", item.status)
-                booksDetail.putExtra("cover", item.coverUrl)
-                booksDetail.putExtra("id", item.bookId)
+                booksDetail.putExtra("book_id", item.id)
                 itemView.context.startActivity(booksDetail)
             }
         }

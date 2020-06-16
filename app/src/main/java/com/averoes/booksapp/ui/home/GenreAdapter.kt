@@ -1,14 +1,12 @@
 package com.averoes.booksapp.ui.home
 
 import android.content.Intent
-import android.text.Layout
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.averoes.booksapp.GenreActivty
+import com.averoes.booksapp.ui.genre.GenreActivty
 import com.averoes.booksapp.R
-import com.averoes.booksapp.model.genre.Genre
 import com.averoes.booksapp.model.genre.ResourceItem
 import com.averoes.booksapp.utils.Constant.GENRE_ID
 import com.averoes.booksapp.utils.Constant.NAME_GENRE
