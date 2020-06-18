@@ -9,4 +9,6 @@
     <string name="image_error">image_error</string>
     <string name="cover">cover</string>
     <string name="reviews">Reviews</string>
+    <string name="synopsis">Synopsis</string>
+    <string name="icon_back">icon back</string>
 </resources>

@@ -14,6 +14,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        supportActionBar!!.hide()
+        window.decorView.overlay
         navigator = BottomNavigator.onCreate(
             fragmentContainer = R.id.fragment_container,
             bottomNavigationView = nav_view,

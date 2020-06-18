@@ -1,11 +1,15 @@
 package com.averoes.booksapp.ui.genre
 
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.GridLayoutManager
 import com.averoes.booksapp.R
 import com.averoes.booksapp.model.book.ResponseBook
@@ -16,18 +20,24 @@ import com.averoes.booksapp.utils.Constant.GENRE_ID
 import com.averoes.booksapp.utils.Constant.NAME_GENRE
 import com.github.ybq.android.spinkit.style.FoldingCube
 import kotlinx.android.synthetic.main.activity_genre_activty.*
+import kotlinx.android.synthetic.main.custom_action_bar.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class GenreActivty : AppCompatActivity() {
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_genre_activty)
 
         getBooksByCategory(intent.getIntExtra(GENRE_ID, 0))
-        supportActionBar?.title = intent.getStringExtra(NAME_GENRE)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar!!.hide()
+
+        title_toolbar.text = intent.getStringExtra(NAME_GENRE)
+        icon_back.setOnClickListener {
+            finish()
+        }
 
         val animation = FoldingCube();
         loading_genre.setIndeterminateDrawable(animation);

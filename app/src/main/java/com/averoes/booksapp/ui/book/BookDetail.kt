@@ -1,16 +1,15 @@
 package com.averoes.booksapp.ui.book
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.averoes.booksapp.R
 import com.averoes.booksapp.model.ResponseBookDetail
 import com.averoes.booksapp.model.ResultBook
-import com.averoes.booksapp.model.ReviewsItem
 import com.averoes.booksapp.ui.home.GenreAdapter
 import com.averoes.booksapp.utils.ConfigRetrofit
 import com.averoes.booksapp.utils.Constant.API_KEY
@@ -18,6 +17,7 @@ import com.averoes.booksapp.utils.Constant.IMAGE_BASEURL
 import com.github.ybq.android.spinkit.style.FoldingCube
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_book_detail.*
+import kotlinx.android.synthetic.main.custom_action_bar.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -29,13 +29,15 @@ class BookDetail : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_book_detail)
 
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
-
+        supportActionBar!!.hide()
         val animation = FoldingCube();
         loading_detail.setIndeterminateDrawable(animation);
         Log.d("CEK DETAIL", intent.getIntExtra("book_id",0).toString())
         getBookDetail()
+
+        icon_back.setOnClickListener {
+            finish()
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -72,11 +74,11 @@ class BookDetail : AppCompatActivity() {
                         title_detail.text = bookDetail.title
                         author_detail.text = "by ${bookDetail.writerByWriterId?.userByUserId?.name}"
                         status_detail.text = bookDetail.status
-                        supportActionBar?.title = bookDetail.title
+                        title_toolbar.text = bookDetail.title
 
-                        Picasso.get().load(IMAGE_BASEURL + bookDetail.coverUrl + API_KEY)
+                        Picasso.get().load(IMAGE_BASEURL + bookDetail.coverUrl + API_KEY).placeholder(R.drawable.ic_broken)
                             .into(poster_book_detail)
-                        Picasso.get().load(IMAGE_BASEURL + bookDetail.coverUrl + API_KEY)
+                        Picasso.get().load(IMAGE_BASEURL + bookDetail.coverUrl + API_KEY).placeholder(R.drawable.ic_broken).resize(240,240)
                             .into(bg_book_detail)
 
                         genre_list_detail.adapter = GenreAdapter(bookDetail.genres)
@@ -89,7 +91,6 @@ class BookDetail : AppCompatActivity() {
 
                         review_list.adapter = ReviewAdapter(bookDetail.reviews?.filter { it.userByReviewerId?.username?.length!! <= 10  })
                         review_list.layoutManager = LinearLayoutManager(this@BookDetail, LinearLayoutManager.HORIZONTAL, false)
-
 
                     }else{
                         showEmptyState()

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_gravity="fill_horizontal"
+    android:background="@color/semi_transparent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ImageView
+        android:id="@+id/icon_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/icon_back"
+        android:layout_marginStart="8dp"
+        android:layout_gravity="start|center"
+        android:src="@drawable/ic_back" />
+
+    <TextView
+        android:id="@+id/title_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/icon_back"
+        android:layout_gravity="center"
+        android:ellipsize="marquee"
+        android:singleLine="true"
+        android:gravity="center_horizontal|center_vertical"
+        tools:text="Title"
+        android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"/>
+
+</FrameLayout>

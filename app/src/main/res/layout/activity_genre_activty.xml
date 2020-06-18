@@ -17,7 +17,8 @@
     <RelativeLayout
         android:id="@+id/content_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        >
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/book_genre_list"
@@ -25,8 +26,12 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             tools:listitem="@layout/item_books"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="?attr/actionBarSize"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
             />
+
+        <include
+            layout="@layout/custom_action_bar"/>
 
     </RelativeLayout>
 
