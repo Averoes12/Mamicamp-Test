@@ -7,6 +7,9 @@ import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.averoes.booksapp.BOOK_ID
+import com.averoes.booksapp.ENCODING
+import com.averoes.booksapp.MIMETYPE
 import com.averoes.booksapp.R
 import com.averoes.booksapp.model.ResponseBookDetail
 import com.averoes.booksapp.model.ResultBook
@@ -32,7 +35,7 @@ class BookDetail : AppCompatActivity() {
         supportActionBar!!.hide()
         val animation = FoldingCube();
         loading_detail.setIndeterminateDrawable(animation);
-        Log.d("CEK DETAIL", intent.getIntExtra("book_id",0).toString())
+        Log.d("CEK DETAIL", intent.getIntExtra(BOOK_ID,0).toString())
         getBookDetail()
 
         icon_back.setOnClickListener {
@@ -54,7 +57,7 @@ class BookDetail : AppCompatActivity() {
     private fun getBookDetail() {
         enableLoading()
         hideEmptyState()
-        ConfigRetrofit().getService().getDetailBook(intent.getIntExtra("book_id", 0).toString())
+        ConfigRetrofit().getService().getDetailBook(intent.getIntExtra(BOOK_ID, 0).toString())
             .enqueue(object : Callback<ResponseBookDetail> {
                 override fun onFailure(call: Call<ResponseBookDetail>, t: Throwable) {
                     Log.d("RESPONSE", "Error ${t.localizedMessage}")
@@ -72,7 +75,7 @@ class BookDetail : AppCompatActivity() {
                     if (response.body()?.success == true) {
                         bookDetail = response.body()?.result!!
                         title_detail.text = bookDetail.title
-                        author_detail.text = "by ${bookDetail.writerByWriterId?.userByUserId?.name}"
+                        author_detail.text = String.format("by ", "${bookDetail.writerByWriterId?.userByUserId?.name}")
                         status_detail.text = bookDetail.status
                         title_toolbar.text = bookDetail.title
 
@@ -85,9 +88,8 @@ class BookDetail : AppCompatActivity() {
                         genre_list_detail.layoutManager = LinearLayoutManager(this@BookDetail, LinearLayoutManager.HORIZONTAL, false)
 
                         rating_detail.rating = bookDetail.decimalRate!!.toFloat()
-                        val mimeType = "text/html"
-                        val encoding = "UTD-8"
-                        synopsis_detail.loadDataWithBaseURL("", bookDetail.synopsis,mimeType, encoding,"")
+                        synopsis_detail.loadDataWithBaseURL("", bookDetail.synopsis,
+                            MIMETYPE, ENCODING,"")
 
                         review_list.adapter = ReviewAdapter(bookDetail.reviews?.filter { it.userByReviewerId?.username?.length!! <= 10  })
                         review_list.layoutManager = LinearLayoutManager(this@BookDetail, LinearLayoutManager.HORIZONTAL, false)
