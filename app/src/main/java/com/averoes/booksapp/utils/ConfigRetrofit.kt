@@ -1,5 +1,7 @@
 package com.averoes.booksapp.utils
 
+import com.averoes.booksapp.API_KEY
+import com.averoes.booksapp.HEADER_KEY
 import com.averoes.booksapp.model.ResponseBookDetail
 import com.averoes.booksapp.model.book.ResponseBook
 import com.averoes.booksapp.model.genre.Genre
@@ -26,7 +28,7 @@ class ConfigRetrofit {
             addInterceptor(
                 Interceptor { chain ->
                     val builder = chain.request().newBuilder()
-                    builder.header("x-dreamfactory-api-key", "25e0bf00ab2fa7f03a9fa57035139e47ccb28c20658f6de907b8011347e369fb")
+                    builder.header(HEADER_KEY, API_KEY)
                     return@Interceptor chain.proceed(builder.build())
                 })
         }.build()

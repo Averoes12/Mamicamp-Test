@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.averoes.booksapp.BOOK_ID
 import com.averoes.booksapp.ui.book.BookDetail
 import com.averoes.booksapp.R
 import com.averoes.booksapp.model.book.ResponseBook
@@ -16,7 +17,6 @@ import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_books.view.*
 
 class BooksAdapter (var books:ResponseBook) : RecyclerView.Adapter<BooksAdapter.Holder>(){
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         return Holder(LayoutInflater.from(parent.context).inflate(R.layout.item_books, parent, false))
     }
@@ -28,7 +28,6 @@ class BooksAdapter (var books:ResponseBook) : RecyclerView.Adapter<BooksAdapter.
     }
 
     class Holder(itemView:View):RecyclerView.ViewHolder(itemView){
-
         fun bind(item:Result){
 
             itemView.title_book_item.text = item.title
@@ -43,7 +42,7 @@ class BooksAdapter (var books:ResponseBook) : RecyclerView.Adapter<BooksAdapter.
 
             itemView.setOnClickListener {
                 val booksDetail = Intent(itemView.context, BookDetail::class.java)
-                booksDetail.putExtra("book_id", item.id)
+                booksDetail.putExtra(BOOK_ID, item.id)
                 itemView.context.startActivity(booksDetail)
             }
         }
